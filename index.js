@@ -1,4 +1,7 @@
-Parse.serverURL = 'https://parseapi.back4app.com';
+var http = require('http');
+http.createServer(function (req, res) {
+
+  Parse.serverURL = 'https://parseapi.back4app.com';
 Parse.initialize('yguQfJ2INRKe3OhFH3f16gQROPCgx3EpiygFhJjC', 'RXe8iIzqrRJpZFkM3xkiiQryz7tBorkr0h5guQh0', 'lJuZQ2VdxtdJSMvN9QlYeFVVUAOGrUPnvWqpIrAy');
 
 (async () => {
@@ -22,3 +25,9 @@ Parse.initialize('yguQfJ2INRKe3OhFH3f16gQROPCgx3EpiygFhJjC', 'RXe8iIzqrRJpZFkM3x
   }
 })();
 ;
+    console.log(`Just got a request at ${req.url}!`)
+    res.write('Yo!');
+    res.end();
+}).listen(process.env.PORT || 3000);
+
+
